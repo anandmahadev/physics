@@ -48,13 +48,21 @@
 </head>
 <body>
 <div class="container">
-  <h1>Physics Exam Study Guide</h1>
-  <p class="subtitle">Module 1: Introduction to Science and Technology &nbsp;|&nbsp; Module 2: Principles of Mechanics and Electromagnetism</p>
+  <h1>Exam Study Guide</h1>
 
-  <div class="tabs">
-    <div class="tab active" onclick="show('m1', this)">Module 1 — Sci &amp; Tech</div>
-    <div class="tab" onclick="show('m2', this)">Module 2 — Mechanics &amp; EM</div>
+  <div class="tabs" style="margin-bottom: 2rem;">
+    <div class="tab subj-tab active" onclick="showSubject('subj-physics', this)">Physics</div>
+    <div class="tab subj-tab" onclick="showSubject('subj-chemistry', this)">Chemistry</div>
   </div>
+
+  <div id="subj-physics" class="subject-content" style="display: block;">
+    <h2 style="font-size: 18px; color: #185fa5; margin-bottom: 5px;">Physics</h2>
+    <p class="subtitle">Module 1: Introduction to Science and Technology &nbsp;|&nbsp; Module 2: Principles of Mechanics and Electromagnetism</p>
+
+    <div class="tabs">
+      <div class="tab mod-tab active" onclick="show('m1', this)">Module 1 — Sci &amp; Tech</div>
+      <div class="tab mod-tab" onclick="show('m2', this)">Module 2 — Mechanics &amp; EM</div>
+    </div>
 
   <!-- MODULE 1 -->
   <div class="section active" id="m1">
@@ -310,10 +318,76 @@
   </div>
 </div>
 
+  </div> <!-- end physics -->
+
+  <!-- CHEMISTRY -->
+  <div id="subj-chemistry" class="subject-content" style="display: none;">
+    <h2 style="font-size: 18px; color: #185fa5; margin-bottom: 5px;">Chemistry</h2>
+    <p class="subtitle">Module 1: Atomic Structure &nbsp;|&nbsp; Module 2: Chemical Bonding</p>
+
+    <div class="tabs">
+      <div class="tab mod-tab active" onclick="show('c_m1', this)">Module 1 — Atomic Structure</div>
+      <div class="tab mod-tab" onclick="show('c_m2', this)">Module 2 — Chemical Bonding</div>
+    </div>
+
+    <!-- CHEM MODULE 1 -->
+    <div class="section active" id="c_m1">
+      <h2>Module 1: Atomic Structure</h2>
+      <div class="card">
+        <div class="q">Q1. What is an Atom?</div>
+        <div class="a">
+          An atom is the smallest unit of ordinary matter that forms a chemical element.
+          <br><br>
+          <b>Subatomic Particles:</b>
+          <div class="point"><div class="pnum">1</div><div class="ptxt"><b>Protons:</b> Positively charged particles.</div></div>
+          <div class="point"><div class="pnum">2</div><div class="ptxt"><b>Neutrons:</b> Neutral particles in the nucleus.</div></div>
+          <div class="point"><div class="pnum">3</div><div class="ptxt"><b>Electrons:</b> Negatively charged particles orbiting the nucleus.</div></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="q">Q2. Define Atomic Number and Mass Number.</div>
+        <div class="a">
+          <div class="point"><div class="pnum">1</div><div class="ptxt"><b>Atomic Number (Z):</b> The number of protons in the nucleus of an atom.</div></div>
+          <div class="point"><div class="pnum">2</div><div class="ptxt"><b>Mass Number (A):</b> The total number of protons and neutrons in an atomic nucleus.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CHEM MODULE 2 -->
+    <div class="section" id="c_m2">
+      <h2>Module 2: Chemical Bonding</h2>
+      <div class="card">
+        <div class="q">Q1. What is an Ionic Bond?</div>
+        <div class="a">
+          An ionic bond is formed by the complete transfer of some electrons from one atom to another.
+          <div class="eg">Example: NaCl (Sodium Chloride).</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="q">Q2. What is a Covalent Bond?</div>
+        <div class="a">
+          A covalent bond is a chemical bond that involves the sharing of electron pairs between atoms.
+          <div class="eg">Example: H2O (Water).</div>
+        </div>
+      </div>
+    </div>
+  </div> <!-- end chemistry -->
+
 <script>
+  function showSubject(id, el) {
+    document.querySelectorAll('.subject-content').forEach(s => s.style.display = 'none');
+    document.querySelectorAll('.subj-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById(id).style.display = 'block';
+    el.classList.add('active');
+  }
+
   function show(id, el) {
-    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    const parent = document.getElementById(id).parentElement;
+    parent.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    
+    const tabsWrapper = el.parentElement;
+    tabsWrapper.querySelectorAll('.mod-tab').forEach(t => t.classList.remove('active'));
+    
     document.getElementById(id).classList.add('active');
     el.classList.add('active');
   }
