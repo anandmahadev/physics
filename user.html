@@ -3,369 +3,84 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Physics Exam Study Guide</title>
+<title>Material Chemistry — Study Guide</title>
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: system-ui, -apple-system, sans-serif; background: #f5f5f0; color: #1a1a18; line-height: 1.7; padding: 1.5rem; }
-  .container { max-width: 820px; margin: 0 auto; }
-  h1 { font-size: 22px; font-weight: 500; margin-bottom: 4px; }
-  .subtitle { font-size: 13px; color: #666; margin-bottom: 1.5rem; }
-  .tabs { display: flex; gap: 8px; margin-bottom: 1.5rem; flex-wrap: wrap; }
-  .tab { padding: 8px 18px; border: 1px solid #ccc; border-radius: 8px; font-size: 13px; cursor: pointer; background: #fff; color: #555; transition: all .15s; }
-  .tab.active { background: #e6f1fb; color: #185fa5; border-color: #185fa5; font-weight: 500; }
-  .section { display: none; }
-  .section.active { display: block; }
-  .card { background: #fff; border: 1px solid #e5e5e0; border-radius: 12px; padding: 1.1rem 1.25rem; margin-bottom: 1rem; }
-  .q { font-size: 13px; font-weight: 500; color: #185fa5; margin-bottom: 6px; }
-  .a { font-size: 13px; color: #1a1a18; line-height: 1.8; }
-  .a b { font-weight: 500; }
-  .point { display: flex; gap: 10px; margin-bottom: 8px; align-items: flex-start; }
-  .pnum { min-width: 22px; height: 22px; border-radius: 50%; background: #f0f0eb; border: 1px solid #ddd; font-size: 11px; font-weight: 500; display: flex; align-items: center; justify-content: center; color: #666; flex-shrink: 0; margin-top: 2px; }
-  .ptxt { font-size: 13px; color: #1a1a18; line-height: 1.7; }
-  .eg { font-size: 12px; color: #555; background: #f5f5f0; border-radius: 6px; padding: 6px 10px; margin-top: 6px; line-height: 1.6; }
-  .tip { font-size: 12px; color: #185fa5; border-left: 2px solid #b5d4f4; padding: 6px 10px; margin-top: 10px; line-height: 1.6; }
-  .badge { display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 6px; background: #faeeda; color: #633806; margin-bottom: 8px; }
-  .tag { display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 6px; background: #f0f0eb; color: #555; margin-right: 4px; margin-bottom: 4px; }
-  .spectrum { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
-  .sp-item { flex: 1; min-width: 80px; padding: 8px 6px; border-radius: 8px; text-align: center; font-size: 11px; font-weight: 500; border: 1px solid #e5e5e0; background: #f5f5f0; color: #1a1a18; }
-  .sp-sub { font-size: 10px; font-weight: 400; color: #666; margin-top: 3px; }
-  h2 { font-size: 15px; font-weight: 500; color: #1a1a18; margin: 0 0 1rem; }
-  .law-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 8px; }
-  .law-box { padding: 12px 10px; border-radius: 8px; border: 1px solid #e5e5e0; text-align: center; background: #f5f5f0; }
-  .law-n { font-size: 22px; font-weight: 500; color: #185fa5; }
-  .law-t { font-size: 12px; font-weight: 500; color: #1a1a18; margin: 4px 0; }
-  .law-d { font-size: 12px; color: #555; line-height: 1.5; }
-  hr.divider { border: none; border-top: 1px solid #e5e5e0; margin: 10px 0; }
-  @media (max-width: 500px) { .law-grid { grid-template-columns: 1fr; } }
-  @media print {
-    body { background: #fff; padding: 0; }
-    .tabs { display: none; }
-    .section { display: block !important; }
-    .section + .section { margin-top: 2rem; border-top: 2px solid #e5e5e0; padding-top: 1.5rem; }
-    .card { break-inside: avoid; border: 1px solid #ccc; }
-  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #fff; color: #1a1a1a; font-size: 14px; line-height: 1.7; }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 2.5rem 1.5rem; }
 
-  /* Chemistry Specific Styles */
+  h1 { font-size: 22px; font-weight: 600; margin-bottom: 4px; }
+  .sub { color: #888; font-size: 13px; margin-bottom: 2rem; }
+
+  .tabs { display: flex; gap: 6px; margin-bottom: 2rem; }
+  .tab { padding: 7px 18px; border: 1px solid #e0e0e0; border-radius: 20px; font-size: 13px; cursor: pointer; background: #fff; color: #555; transition: all .15s; }
+  .tab.active { background: #1a1a1a; color: #fff; border-color: #1a1a1a; }
+
+  .module { display: none; }
+  .module.active { display: block; }
+
   .mod-label { font-size: 11px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #aaa; margin-bottom: 1.5rem; }
+
   .qcard { border-bottom: 1px solid #f0f0f0; }
   .qhead { display: flex; align-items: flex-start; gap: 14px; padding: 14px 0; cursor: pointer; }
   .qno { font-size: 11px; font-weight: 600; color: #aaa; min-width: 24px; margin-top: 3px; flex-shrink: 0; }
   .qtxt { font-size: 14px; font-weight: 500; flex: 1; color: #1a1a1a; line-height: 1.5; }
   .arrow { color: #ccc; font-size: 16px; flex-shrink: 0; margin-top: 1px; transition: transform .2s; }
   .qcard.open .arrow { transform: rotate(90deg); }
+
   .qbody { display: none; padding: 0 0 18px 38px; }
   .qcard.open .qbody { display: block; }
+
   .ans { color: #333; font-size: 13.5px; line-height: 1.8; }
   .ans b { font-weight: 600; color: #1a1a1a; }
+
   .sec { font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: #aaa; margin: 16px 0 8px; }
   .sec:first-child { margin-top: 0; }
+
   ul.pts { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 7px; }
   ul.pts li { padding-left: 14px; position: relative; font-size: 13.5px; color: #333; line-height: 1.7; }
   ul.pts li::before { content: '-'; position: absolute; left: 0; color: #ccc; }
+
   ol.steps { padding-left: 20px; display: flex; flex-direction: column; gap: 7px; }
   ol.steps li { font-size: 13.5px; color: #333; line-height: 1.7; padding-left: 4px; }
+
   .box { background: #fafafa; border: 1px solid #ebebeb; border-radius: 8px; padding: 12px 14px; margin: 12px 0; font-size: 13px; color: #444; line-height: 1.75; }
   .box b { color: #1a1a1a; }
+
   .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0; }
   .cell { background: #fafafa; border: 1px solid #ebebeb; border-radius: 8px; padding: 12px; font-size: 13px; color: #444; line-height: 1.7; }
   .cell .ct { font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #888; margin-bottom: 8px; }
+
   .note { font-size: 12.5px; color: #888; border-left: 2px solid #e8e8e8; padding-left: 12px; margin-top: 12px; line-height: 1.65; font-style: italic; }
+
   .pill { display: inline-block; font-family: monospace; font-size: 12px; background: #f4f4f4; border: 1px solid #e8e8e8; padding: 2px 9px; border-radius: 12px; margin: 2px 3px; color: #333; }
+
+  @media(max-width:520px) { .grid2 { grid-template-columns: 1fr; } }
+  @media print {
+    .tabs { display: none; }
+    .module { display: block !important; }
+    .qbody { display: block !important; }
+    .arrow { display: none; }
+    .qcard { page-break-inside: avoid; }
+  }
 </style>
 </head>
 <body>
-<div class="container">
-  <h1>Exam Study Guide</h1>
+<div class="wrap">
+  <h1>Material Chemistry</h1>
+  <div class="sub">Study Guide &nbsp;·&nbsp; Module 1 &amp; 2 &nbsp;·&nbsp; 20 Questions</div>
 
-  <div class="tabs" style="margin-bottom: 2rem;">
-    <div class="tab subj-tab active" onclick="showSubject('subj-physics', this)">Physics</div>
-    <div class="tab subj-tab" onclick="showSubject('subj-chemistry', this)">Chemistry</div>
+  <div class="tabs">
+    <div class="tab active" onclick="sw('m1',this)">Module 1</div>
+    <div class="tab" onclick="sw('m2',this)">Module 2</div>
   </div>
 
-  <div id="subj-physics" class="subject-content" style="display: block;">
-    <h2 style="font-size: 18px; color: #185fa5; margin-bottom: 5px;">Physics</h2>
-    <p class="subtitle">Module 1: Introduction to Science and Technology &nbsp;|&nbsp; Module 2: Principles of Mechanics and Electromagnetism</p>
-
-    <div class="tabs">
-      <div class="tab mod-tab active" onclick="show('m1', this)">Module 1 — Sci &amp; Tech</div>
-      <div class="tab mod-tab" onclick="show('m2', this)">Module 2 — Mechanics &amp; EM</div>
-    </div>
-
-  <!-- MODULE 1 -->
-  <div class="section active" id="m1">
-    <h2>Module 1: Introduction to Science and Technology</h2>
-
-    <div class="card">
-      <div class="q">Q1. Define science and its role in understanding the natural world.</div>
-      <div class="a">
-        <b>Definition:</b> Science is a systematic and organized body of knowledge acquired through careful observation, experimentation, and logical reasoning. The word "science" is derived from the Latin word <i>scientia</i>, meaning knowledge.<br><br>
-        <b>Role of Science in Understanding the Natural World:</b>
-        <div class="point"><div class="pnum">1</div><div class="ptxt"><b>Explains natural phenomena:</b> Science provides logical explanations for events like lightning, earthquakes, and eclipses that were once considered supernatural.</div></div>
-        <div class="point"><div class="pnum">2</div><div class="ptxt"><b>Discovers universal laws:</b> Through science, we have discovered laws like Newton's Law of Gravitation, the Laws of Thermodynamics, and the Laws of Motion that govern the universe.</div></div>
-        <div class="point"><div class="pnum">3</div><div class="ptxt"><b>Advances medicine and health:</b> Scientific research has led to vaccines, antibiotics, and surgical techniques, greatly improving human health and life expectancy.</div></div>
-        <div class="point"><div class="pnum">4</div><div class="ptxt"><b>Drives technological progress:</b> Scientific discoveries form the foundation for technologies like electricity, computers, the internet, and space travel.</div></div>
-        <div class="point"><div class="pnum">5</div><div class="ptxt"><b>Promotes rational thinking:</b> Science replaces superstition and myths with evidence-based understanding, encouraging critical and logical thought.</div></div>
-        <div class="tip">Conclusion: Science is the key that unlocks the mysteries of the universe, helping humanity understand, predict, and manage the natural world effectively.</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="q">Q2. Five main characteristics of science.</div>
-      <div class="a">
-        <div class="point"><div class="pnum">1</div><div class="ptxt"><b>Empirical:</b> Science is based on direct observation and experimentation rather than belief or assumption.<div class="eg">Example: Galileo dropped objects from the Leaning Tower of Pisa to observe how gravity affects bodies of different mass.</div></div></div>
-        <div class="point"><div class="pnum">2</div><div class="ptxt"><b>Systematic:</b> Science follows a structured and organized method of inquiry — the scientific method — ensuring consistency and reliability in findings.<div class="eg">Example: A chemist follows fixed steps — hypothesis, experiment, observation, conclusion — when testing a new reaction.</div></div></div>
-        <div class="point"><div class="pnum">3</div><div class="ptxt"><b>Objective:</b> Scientific conclusions are free from personal bias. Results must be reproducible by any scientist under the same conditions.<div class="eg">Example: The boiling point of pure water at sea level is always 100°C, regardless of who measures it.</div></div></div>
-        <div class="point"><div class="pnum">4</div><div class="ptxt"><b>Falsifiable:</b> A scientific claim must be capable of being tested and potentially disproved.<div class="eg">Example: "All metals conduct electricity" can be tested and potentially falsified.</div></div></div>
-        <div class="point"><div class="pnum">5</div><div class="ptxt"><b>Self-correcting:</b> Science revises its theories when new evidence contradicts old conclusions.<div class="eg">Example: The geocentric model was replaced by the heliocentric model when better evidence emerged.</div></div></div>
-        <div class="tip">Other characteristics: cumulative (builds on past knowledge), universal (same laws everywhere), predictive (can forecast future events).</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="q">Q3. Steps of the Scientific Method.</div>
-      <div class="a">
-        The scientific method is a step-by-step logical process used to investigate natural phenomena and acquire new knowledge.<br><br>
-        <div class="point"><div class="pnum">1</div><div class="ptxt"><b>Observation:</b> Notice something interesting or unexplained in the natural world.<div class="eg">Example: Plants near a window grow toward the light.</div></div></div>
-        <div class="point"><div class="pnum">2</div><div class="ptxt"><b>Identifying the Problem:</b> Formulate a specific, clear question based on the observation.<div class="eg">Example: "Do plants grow toward a light source?"</div></div></div>
-        <div class="point"><div class="pnum">3</div><div class="ptxt"><b>Forming a Hypothesis:</b> An educated, testable prediction or possible answer to the question.<div class="eg">Example: "Plants will bend toward light because they need it for photosynthesis."</div></div></div>
-        <div class="point"><div class="pnum">4</div><div class="ptxt"><b>Conducting the Experiment:</b> A controlled experiment is designed to test the hypothesis. Only one variable changes at a time.</div></div>
-        <div class="point"><div class="pnum">5</div><div class="ptxt"><b>Data Collection and Analysis:</b> Results are recorded, organized using tables or graphs, and analyzed to identify patterns.</div></div>
-        <div class="point"><div class="pnum">6</div><div class="ptxt"><b>Drawing Conclusions:</b> Based on analysis, the scientist concludes whether the hypothesis is supported or rejected.</div></div>
-        <div class="point"><div class="pnum">7</div><div class="ptxt"><b>Reporting and Peer Review:</b> Findings are published and reviewed by other scientists to verify accuracy.</div></div>
-        <div class="tip">If the hypothesis is rejected, a new hypothesis is formed and the cycle repeats — making science a continuous, self-improving process.</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="q">Q4 &amp; Q5. Relationship and interdependence between Science and Technology.</div>
-      <div class="a">
-        <b>Science</b> seeks knowledge/understanding of nature. <b>Technology</b> applies that knowledge to solve practical problems.<br><br>
-        <b>Key difference:</b> Science asks "Why/How does this work?" Technology asks "How can we use this?"<br><br>
-        <div class="point"><div class="pnum">1</div><div class="ptxt"><b>Science provides the base:</b> Without the scientific discovery of electromagnetic induction, there would be no electric generators or motors.</div></div>
-        <div class="point"><div class="pnum">2</div><div class="ptxt"><b>Technology enables science:</b> The development of the electron microscope (technology) allowed scientists to observe viruses and cells in detail.</div></div>
-        <div class="point"><div class="pnum">3</div><div class="ptxt"><b>Different purposes:</b> Science seeks truth and understanding; technology seeks utility and efficiency. Science is exploratory; technology is goal-directed.</div></div>
-        <div class="point"><div class="pnum">4</div><div class="ptxt"><b>Interdependence:</b> They exist in a symbiotic relationship — progress in one accelerates the other. Neither is fully independent.</div></div>
-        <div class="eg">Examples: Discovery of X-rays (science) → X-ray machines (technology) | Understanding of nuclear fission (science) → Nuclear reactors (technology)</div>
-        <div class="tip">Conclusion: Science discovers, technology applies. Together they drive human progress.</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="q">Q6. How scientific discoveries lead to technological innovations.</div>
-      <div class="a">
-        <div class="point"><div class="pnum">1</div><div class="ptxt"><b>Electricity and Electromagnetism:</b> Faraday's discovery of electromagnetic induction (1831) led to electric generators, transformers, and motors.</div></div>
-        <div class="point"><div class="pnum">2</div><div class="ptxt"><b>Nuclear Physics:</b> Einstein's E=mc² and the discovery of nuclear fission led to nuclear power plants.</div></div>
-        <div class="point"><div class="pnum">3</div><div class="ptxt"><b>Semiconductor Physics:</b> Quantum mechanics explaining electron behavior in solids led to the transistor and microchip — enabling computers and smartphones.</div></div>
-        <div class="point"><div class="pnum">4</div><div class="ptxt"><b>Germ Theory:</b> Pasteur's discovery that microorganisms cause disease led to vaccines, pasteurization, and antibiotics.</div></div>
-        <div class="point"><div class="pnum">5</div><div class="ptxt"><b>Genetics:</b> Discovery of the DNA double helix (1953) led to genetic engineering, forensic DNA testing, and CRISPR gene therapy.</div></div>
-        <div class="tip">Conclusion: Curiosity-driven science today becomes the transformative technology of tomorrow.</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="q">Q7. Positive and negative impacts of Science and Technology.</div>
-      <div class="a">
-        <b>Positive Impacts:</b>
-        <div class="point"><div class="pnum">1</div><div class="ptxt"><b>Healthcare:</b> Vaccines, antibiotics, MRI, CT scans have increased life expectancy and reduced mortality.</div></div>
-        <div class="point"><div class="pnum">2</div><div class="ptxt"><b>Communication:</b> The internet and smartphones made global communication instant, connecting billions.</div></div>
-        <div class="point"><div class="pnum">3</div><div class="ptxt"><b>Agriculture:</b> The Green Revolution used fertilizers and hybrid seeds to dramatically increase food production.</div></div>
-        <div class="point"><div class="pnum">4</div><div class="ptxt"><b>Energy:</b> Solar panels, wind turbines, and nuclear energy provide cleaner alternatives.</div></div>
-        <hr class="divider">
-        <b>Negative Impacts:</b>
-        <div class="point"><div class="pnum">5</div><div class="ptxt"><b>Environmental pollution:</b> Industrial technologies emit greenhouse gases, leading to climate change and ecosystem destruction.</div></div>
-        <div class="point"><div class="pnum">6</div><div class="ptxt"><b>Weapons of mass destruction:</b> Scientific knowledge has been misused to create nuclear, chemical, and biological weapons.</div></div>
-        <div class="point"><div class="pnum">7</div><div class="ptxt"><b>Unemployment and inequality:</b> Automation replaces human jobs; benefits of technology are not equally distributed.</div></div>
-        <div class="tip">Conclusion: The impact of science and technology depends entirely on how responsibly and ethically they are used.</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="q">Q8. Historical development — Ancient &amp; Medieval periods.</div>
-      <div class="a">
-        <b>Ancient Period:</b>
-        <div class="point"><div class="pnum">1</div><div class="ptxt"><b>Mesopotamia and Egypt (3000–1000 BCE):</b> Agriculture, irrigation, the wheel, writing, and geometry for pyramid construction.</div></div>
-        <div class="point"><div class="pnum">2</div><div class="ptxt"><b>Ancient India:</b> Decimal system, zero (Aryabhata), value of π, Ayurvedic medicine, early astronomy.</div></div>
-        <div class="point"><div class="pnum">3</div><div class="ptxt"><b>Ancient Greece:</b> Archimedes — buoyancy and lever. Aristotle — classification of organisms. Pythagoras — geometry.</div></div>
-        <div class="point"><div class="pnum">4</div><div class="ptxt"><b>Ancient China:</b> Compass, paper, silk, and early gunpowder.</div></div>
-        <hr class="divider">
-        <b>Medieval Period (500–1500 CE):</b>
-        <div class="point"><div class="pnum">5</div><div class="ptxt"><b>Islamic Golden Age:</b> Al-Khawarizmi (algebra); Ibn Sina (<i>Canon of Medicine</i>); Al-Biruni measured Earth's circumference.</div></div>
-        <div class="point"><div class="pnum">6</div><div class="ptxt"><b>Europe:</b> Mechanical clocks, Gutenberg's printing press (1440), windmills, and early universities.</div></div>
-        <div class="tip">Conclusion: Ancient and medieval periods laid the foundations upon which the modern scientific revolution was built.</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="q">Q9. Major developments in Modern period (20th century onwards).</div>
-      <div class="a">
-        <div class="point"><div class="pnum">1</div><div class="ptxt"><b>Physics Revolution:</b> Einstein's Theory of Relativity (1905, 1915); Quantum mechanics — led to lasers, semiconductors, and MRI.</div></div>
-        <div class="point"><div class="pnum">2</div><div class="ptxt"><b>Nuclear Energy:</b> Nuclear fission (1938) → nuclear power plants and atomic bombs (1945).</div></div>
-        <div class="point"><div class="pnum">3</div><div class="ptxt"><b>Computing and Internet:</b> Transistor (1947) → microchip → PCs → Internet (1990s) → AI.</div></div>
-        <div class="point"><div class="pnum">4</div><div class="ptxt"><b>Medical Breakthroughs:</b> Penicillin (1928), vaccines, organ transplants, MRI, Human Genome Project (2003).</div></div>
-        <div class="point"><div class="pnum">5</div><div class="ptxt"><b>Space Exploration:</b> Sputnik (1957), Moon landing (1969), Hubble Telescope, Mars rovers, GPS.</div></div>
-        <div class="point"><div class="pnum">6</div><div class="ptxt"><b>Biotechnology:</b> DNA double helix (1953), genetic engineering, cloning, CRISPR, mRNA vaccines.</div></div>
-        <div class="tip">Conclusion: The 20th–21st centuries represent the most rapid period of scientific advancement in human history.</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="q">Q10. Importance of ethics in Science and Technology — four key issues.</div>
-      <div class="a">
-        <b>Importance:</b> Ethics ensures research and innovation are conducted responsibly, with respect for human dignity, safety, and the environment.<br><br>
-        <div class="point"><div class="pnum">1</div><div class="ptxt"><b>Privacy and Data Security:</b> Misuse of personal data by corporations or governments — surveillance, identity theft, manipulation.<div class="eg">Example: Social media platforms collecting and selling user data without consent.</div></div></div>
-        <div class="point"><div class="pnum">2</div><div class="ptxt"><b>Bioethics — Genetic Engineering:</b> CRISPR can eliminate hereditary diseases, but creating "designer babies" raises questions about equality and consent.<div class="eg">Example: The controversial gene-edited babies in China (2018) shocked the scientific community.</div></div></div>
-        <div class="point"><div class="pnum">3</div><div class="ptxt"><b>Environmental Ethics:</b> Scientists have a responsibility to minimize environmental damage from industrial technologies.<div class="eg">Example: Use of DDT that effectively killed pests but devastated bird populations and ecosystems.</div></div></div>
-        <div class="point"><div class="pnum">4</div><div class="ptxt"><b>Weapons Development:</b> Using science to develop nuclear, biological, or chemical weapons causing mass civilian casualties is ethically unacceptable.<div class="eg">Example: The Chemical Weapons Convention (1993) bans development and use of chemical weapons.</div></div></div>
-        <div class="tip">Conclusion: Ethics acts as a compass for science and technology — guiding innovation to benefit humanity while protecting individuals and the planet.</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- MODULE 2 -->
-  <div class="section" id="m2">
-    <h2>Module 2: Principles of Mechanics and Electromagnetism</h2>
-
-    <div class="card">
-      <div class="q">Q1. Define motion and its three main types.</div>
-      <div class="a">
-        <b>Motion:</b> Change in position of an object with respect to time, as observed from a reference point.<br><br>
-        <div class="point"><div class="pnum">1</div><div class="ptxt"><b>Linear (Translational) Motion:</b> Object moves in a straight line. Velocity may be uniform or non-uniform.<div class="eg">Example: A car on a highway. A bullet fired from a gun.</div></div></div>
-        <div class="point"><div class="pnum">2</div><div class="ptxt"><b>Circular Motion:</b> Object moves along a circular path. Direction continuously changes — it is an accelerated motion. Centripetal force acts toward center.<div class="eg">Example: Earth revolving around the Sun. A satellite orbiting Earth.</div></div></div>
-        <div class="point"><div class="pnum">3</div><div class="ptxt"><b>Rotational Motion:</b> Object rotates about its own fixed axis. Every particle moves in a circle about the axis.<div class="eg">Example: Earth spinning on its axis. A ceiling fan. A spinning top.</div></div></div>
-        <div class="tip">Key distinction: Circular motion = object travels through space in a circle. Rotational motion = object spins in place about its own axis.</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="q">Q2. Newton's Three Laws of Motion + Inertia.</div>
-      <div class="a">
-        Isaac Newton formulated three fundamental laws of motion in 1687, published in <i>Principia Mathematica</i>.
-        <div class="law-grid">
-          <div class="law-box"><div class="law-n">I</div><div class="law-t">Law of Inertia</div><div class="law-d">A body at rest stays at rest; a body in motion stays in motion unless acted on by an external force.</div></div>
-          <div class="law-box"><div class="law-n">II</div><div class="law-t">F = ma</div><div class="law-d">Rate of change of momentum is proportional to applied force and occurs in direction of force.</div></div>
-          <div class="law-box"><div class="law-n">III</div><div class="law-t">Action–Reaction</div><div class="law-d">For every action, there is an equal and opposite reaction. Forces always occur in pairs.</div></div>
-        </div>
-        <br>
-        <b>Inertia — Defined by First Law:</b><br>
-        Inertia is the natural tendency of an object to resist any change in its state of rest or uniform motion. It is a property of matter, not a force.
-        <div class="point"><div class="pnum">1</div><div class="ptxt"><b>Inertia of rest:</b> A book on a table stays there unless pushed.<div class="eg">Example: Passengers are thrown forward when a bus brakes suddenly.</div></div></div>
-        <div class="point"><div class="pnum">2</div><div class="ptxt"><b>Inertia of motion:</b> A moving object continues moving unless stopped by a force.<div class="eg">Example: Passengers are pushed back when a bus accelerates from rest.</div></div></div>
-        <div class="point"><div class="pnum">3</div><div class="ptxt"><b>Inertia depends on mass:</b> Heavier objects have more inertia — harder to start or stop.</div></div>
-        <div class="tip">Formula link: First Law is a special case of Second Law when F = 0, so acceleration = 0, velocity stays constant.</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="q">Q3. Define Work. When is work zero even if force is applied?</div>
-      <div class="a">
-        <b>Definition:</b> Work is done when a force applied on an object causes displacement in the direction of the force (or a component of it).<br><br>
-        <b>Formula:</b> W = F × s × cos θ &nbsp;(Joules)<br>
-        Where: W = Work, F = Force (N), s = Displacement (m), θ = Angle between force and displacement<br><br>
-        <b>Two conditions where Work = Zero even when force is applied:</b>
-        <div class="point"><div class="pnum">1</div><div class="ptxt"><b>Displacement is zero (s = 0):</b> If force is applied but object does not move, W = F × 0 × cosθ = 0.<div class="eg">Example: Pushing a wall — no matter how hard, the wall does not move. Holding a heavy bag while standing still — no work done on the bag.</div></div></div>
-        <div class="point"><div class="pnum">2</div><div class="ptxt"><b>Force perpendicular to displacement (θ = 90°):</b> cos 90° = 0, so W = F × s × 0 = 0.<div class="eg">Example: Carrying a bag while walking horizontally — gravity acts downward but displacement is horizontal. A satellite orbiting Earth — gravity is centripetal (perpendicular to motion), does zero work.</div></div></div>
-        <div class="tip">Important: In physics, work has a precise definition. Zero displacement OR perpendicular force = zero work, regardless of effort applied.</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="q">Q4. Law of Conservation of Energy + falling object example.</div>
-      <div class="a">
-        <b>Law:</b> Energy can neither be created nor destroyed; it can only be transformed from one form to another. The total energy of an isolated system always remains constant.<br><br>
-        Established by Mayer, Joule, and Helmholtz in the 19th century.<br><br>
-        <b>Energy Transformation in a Falling Object:</b>
-        <div class="point"><div class="pnum">1</div><div class="ptxt"><b>At the top (before release):</b> Ball is at rest. KE = 0. All energy is stored as gravitational Potential Energy.<br>PE = mgh (maximum), KE = 0</div></div>
-        <div class="point"><div class="pnum">2</div><div class="ptxt"><b>During the fall (midway):</b> Height decreases → PE decreases. Speed increases → KE increases. Total (PE + KE) remains constant.<br>PE = mgh/2, KE = ½mv² (partial)</div></div>
-        <div class="point"><div class="pnum">3</div><div class="ptxt"><b>Just before hitting ground (h = 0):</b> All PE converted to KE. PE = 0, KE = ½mv² (maximum). Ball at maximum velocity.</div></div>
-        <div class="point"><div class="pnum">4</div><div class="ptxt"><b>After hitting ground:</b> KE converts to sound, heat, and deformation energy — but total energy in system is still conserved.</div></div>
-        <div class="tip">At every point: PE + KE = constant = mgh<br>Formulas: PE = mgh | KE = ½mv² | At ground: mgh = ½mv²</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="q">Q5. What is an Electric Field? Stationary vs moving charge.</div>
-      <div class="a">
-        <b>Definition:</b> An electric field is a region of space around a charged particle where another charged particle experiences an electric force.<br><br>
-        <b>Formula:</b> E = F/q &nbsp;|&nbsp; <b>Unit:</b> N/C or V/m<br>
-        Direction: away from positive charges, toward negative charges.<br><br>
-        <b>Stationary Charge:</b>
-        <div class="point"><div class="pnum">1</div><div class="ptxt">Produces only an <b>electric field</b>. Field lines radiate outward (positive) or inward (negative) symmetrically.</div></div>
-        <div class="point"><div class="pnum">2</div><div class="ptxt">Does NOT produce a magnetic field. A magnetic field requires movement of charges.</div></div>
-        <div class="point"><div class="pnum">3</div><div class="ptxt">The field is static and does not change with time as long as the charge remains at rest.</div></div>
-        <b>Moving Charge:</b>
-        <div class="point"><div class="pnum">4</div><div class="ptxt">Constitutes an electric current. Produces <b>both an electric field AND a magnetic field</b> simultaneously (Maxwell's equations).</div></div>
-        <div class="point"><div class="pnum">5</div><div class="ptxt">As speed increases, the magnetic field becomes stronger. At relativistic speeds, the electric field shape also distorts.</div></div>
-        <div class="eg">Example: Electrons flowing through a wire produce a magnetic field around it — principle behind electromagnets and electric motors.</div>
-        <div class="tip">Key rule: Stationary charge → Electric field only. Moving charge → Electric + Magnetic field. Foundation of electromagnetism.</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="q">Q6. Define Magnetic Field. When does it exert force on a charged particle?</div>
-      <div class="a">
-        <b>Definition:</b> A magnetic field is a region in space around a magnet or current-carrying conductor in which a magnetic force can be experienced. It is a vector quantity.<br><br>
-        <b>Symbol:</b> B &nbsp;|&nbsp; <b>Unit:</b> Tesla (T) &nbsp;|&nbsp; Represented by magnetic field lines (North to South outside magnet)<br><br>
-        <b>Sources of Magnetic Fields:</b>
-        <div class="point"><div class="pnum">1</div><div class="ptxt"><b>Permanent magnets:</b> Bar magnets, horseshoe magnets — constant field due to alignment of magnetic domains.</div></div>
-        <div class="point"><div class="pnum">2</div><div class="ptxt"><b>Electric currents:</b> Any moving charge produces a magnetic field (Oersted's discovery, 1820) — basis of electromagnets.</div></div>
-        <b>Condition for Magnetic Force on Charged Particle:</b><br>
-        <b>F = qvB sin θ</b><br><br>
-        <div class="point"><div class="pnum">3</div><div class="ptxt"><b>Particle must be moving (v ≠ 0):</b> A stationary charge in a magnetic field experiences NO force whatsoever.</div></div>
-        <div class="point"><div class="pnum">4</div><div class="ptxt"><b>Velocity must not be parallel to B (θ ≠ 0°):</b> If particle moves parallel to the field, sin θ = 0 and F = 0. Velocity must have a perpendicular component.</div></div>
-        <div class="point"><div class="pnum">5</div><div class="ptxt"><b>Maximum force when θ = 90°:</b> sin 90° = 1, so F = qvB (maximum). Particle moves in a circular path.</div></div>
-        <div class="eg">Example: In cathode ray tubes, electrons are deflected by magnetic fields to draw images. In particle accelerators like CERN's LHC, magnetic fields steer fast particles in circular paths.</div>
-        <div class="tip">The magnetic force is always perpendicular to velocity — so it never does work on the particle (changes direction, not speed).</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="q">Q7. Seven regions of the Electromagnetic Spectrum (in order).</div>
-      <div class="a">
-        <b>Electromagnetic Spectrum:</b> The complete range of all EM waves arranged in order of increasing frequency (decreasing wavelength). All travel at the speed of light (3 × 10⁸ m/s) in vacuum and are transverse waves.<br><br>
-        <b>Seven regions in order of increasing frequency:</b>
-        <div class="spectrum">
-          <div class="sp-item">Radio<div class="sp-sub">Lowest freq. Longest wavelength</div></div>
-          <div class="sp-item">Microwave<div class="sp-sub">Short radio waves</div></div>
-          <div class="sp-item">Infrared<div class="sp-sub">Heat radiation</div></div>
-          <div class="sp-item">Visible<div class="sp-sub">Human vision</div></div>
-          <div class="sp-item">Ultraviolet<div class="sp-sub">Beyond violet</div></div>
-          <div class="sp-item">X-rays<div class="sp-sub">Penetrates soft tissue</div></div>
-          <div class="sp-item">Gamma<div class="sp-sub">Highest freq. Most energy</div></div>
-        </div>
-        <br>
-        <div class="point"><div class="pnum">1</div><div class="ptxt"><b>Radio Waves (wavelength ~1mm to 100km):</b> Used in AM/FM broadcasting, TV transmission, WiFi, mobile communication, and radar.<div class="eg">Use: FM radio stations broadcast using radio waves. Mobile phones send/receive data via radio waves.</div></div></div>
-        <div class="point"><div class="pnum">2</div><div class="ptxt"><b>X-Rays (wavelength ~0.01–10 nm):</b> Penetrate soft tissue but absorbed by dense materials like bone — invaluable in medical imaging.<div class="eg">Use: Medical radiography to see broken bones and tumors without surgery. Also used in airport security scanners and crystallography.</div></div></div>
-        <b>Properties common to all EM waves:</b>
-        <div class="point"><div class="pnum">3</div><div class="ptxt">All travel at c = 3 × 10⁸ m/s in vacuum</div></div>
-        <div class="point"><div class="pnum">4</div><div class="ptxt">All are transverse waves (oscillations perpendicular to direction of travel)</div></div>
-        <div class="point"><div class="pnum">5</div><div class="ptxt">Higher frequency = higher energy (E = hf, where h is Planck's constant)</div></div>
-        <div class="tip">Memory trick: <b>R</b>eal <b>M</b>en <b>I</b>n <b>V</b>egas <b>U</b>se <b>X</b>-tra <b>G</b>ood luck (Radio, Microwave, Infrared, Visible, UV, X-ray, Gamma)</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-  </div> <!-- end physics -->
-
-  <!-- CHEMISTRY -->
-  <div id="subj-chemistry" class="subject-content" style="display: none;">
-    <h2 style="font-size: 18px; color: #185fa5; margin-bottom: 5px;">Chemistry</h2>
-    <p class="subtitle">Module 1: Chemistry Module 1 &nbsp;|&nbsp; Module 2: Chemistry Module 2</p>
-
-    <div class="tabs">
-      <div class="tab mod-tab active" onclick="show('c_m1', this)">Module 1 — Chemistry</div>
-      <div class="tab mod-tab" onclick="show('c_m2', this)">Module 2 — Chemistry</div>
-    </div>
-
-
-    <!-- CHEM MODULE 1 -->
-    <div class="section active" id="c_m1">
-
-  <div class="section active" id="c_m1">
+  <!-- ======= MODULE 1 ======= -->
+  <div class="module active" id="m1">
   <div class="mod-label">Module 1 — Materials, Bonding &amp; Electrical Properties</div>
 
   <div class="qcard open">
-    <div class="qhead" onclick="tog_c(this)"><div class="qno">Q1</div><div class="qtxt">Using energy band diagrams, classify materials into conductors, semiconductors, and insulators, and explain the differences in their electrical behavior.</div><div class="arrow">›</div></div>
+    <div class="qhead" onclick="tog(this)"><div class="qno">Q1</div><div class="qtxt">Using energy band diagrams, classify materials into conductors, semiconductors, and insulators, and explain the differences in their electrical behavior.</div><div class="arrow">›</div></div>
     <div class="qbody"><div class="ans">
       <div class="sec">Energy Band Theory</div>
       In solids, atomic energy levels merge into continuous <b>energy bands</b>. The <b>Valence Band (VB)</b> holds bound electrons; the <b>Conduction Band (CB)</b> holds free electrons that conduct electricity. The <b>band gap (Eg)</b> between them determines electrical behavior.
@@ -386,7 +101,7 @@
   </div>
 
   <div class="qcard">
-    <div class="qhead" onclick="tog_c(this)"><div class="qno">Q2</div><div class="qtxt">Discuss how the electronic configuration and atomic arrangement of atoms influence the electrical and thermal conductivity of materials.</div><div class="arrow">›</div></div>
+    <div class="qhead" onclick="tog(this)"><div class="qno">Q2</div><div class="qtxt">Discuss how the electronic configuration and atomic arrangement of atoms influence the electrical and thermal conductivity of materials.</div><div class="arrow">›</div></div>
     <div class="qbody"><div class="ans">
       <div class="sec">Electronic Configuration → Electrical Conductivity</div>
       <ul class="pts">
@@ -412,7 +127,7 @@
   </div>
 
   <div class="qcard">
-    <div class="qhead" onclick="tog_c(this)"><div class="qno">Q3</div><div class="qtxt">Compare the working materials used in Hard Disk Drives (HDDs) and Solid State Drives (SSDs).</div><div class="arrow">›</div></div>
+    <div class="qhead" onclick="tog(this)"><div class="qno">Q3</div><div class="qtxt">Compare the working materials used in Hard Disk Drives (HDDs) and Solid State Drives (SSDs).</div><div class="arrow">›</div></div>
     <div class="qbody"><div class="ans">
       <div class="grid2">
         <div class="cell"><div class="ct">HDD</div><b>Storage medium:</b> Spinning magnetic platters coated with cobalt-alloy thin film or iron oxide (Fe₂O₃).<br><br><b>Read/Write head:</b> Giant Magnetoresistance (GMR) sensor — resistance changes with magnetic field orientation.<br><br><b>Principle:</b> Data stored as magnetic domains; head detects magnetization direction (0s and 1s).<br><br><b>Lubricant:</b> Perfluoropolyether (PFPE) ultra-thin film prevents head-to-disk contact.</div>
@@ -429,7 +144,7 @@
   </div>
 
   <div class="qcard">
-    <div class="qhead" onclick="tog_c(this)"><div class="qno">Q4</div><div class="qtxt">Identify the physical and chemical properties that make Silicon more suitable for semiconductor fabrication than Germanium.</div><div class="arrow">›</div></div>
+    <div class="qhead" onclick="tog(this)"><div class="qno">Q4</div><div class="qtxt">Identify the physical and chemical properties that make Silicon more suitable for semiconductor fabrication than Germanium.</div><div class="arrow">›</div></div>
     <div class="qbody"><div class="ans">
       <div class="grid2">
         <div class="cell"><div class="ct">Silicon (Si)</div>Band gap: <b>1.12 eV</b><br>Melting point: <b>1414°C</b><br>Native oxide: <b>SiO₂ — stable, excellent insulator</b><br>Earth abundance: ~28% of crust<br>Leakage current: Very low at room temp<br>Max operating temp: ~150°C</div>
@@ -448,7 +163,7 @@
   </div>
 
   <div class="qcard">
-    <div class="qhead" onclick="tog_c(this)"><div class="qno">Q5</div><div class="qtxt">Explain how oxidation–reduction reactions occur during the charging and discharging cycles of Lithium-ion batteries.</div><div class="arrow">›</div></div>
+    <div class="qhead" onclick="tog(this)"><div class="qno">Q5</div><div class="qtxt">Explain how oxidation–reduction reactions occur during the charging and discharging cycles of Lithium-ion batteries.</div><div class="arrow">›</div></div>
     <div class="qbody"><div class="ans">
       <div class="sec">Battery Components</div>
       <ul class="pts">
@@ -479,7 +194,7 @@
   </div>
 
   <div class="qcard">
-    <div class="qhead" onclick="tog_c(this)"><div class="qno">Q6</div><div class="qtxt">Compare the principles and advantages of spintronics, neuromorphic computing, and 3D integrated circuits in enabling advanced computing architectures.</div><div class="arrow">›</div></div>
+    <div class="qhead" onclick="tog(this)"><div class="qno">Q6</div><div class="qtxt">Compare the principles and advantages of spintronics, neuromorphic computing, and 3D integrated circuits in enabling advanced computing architectures.</div><div class="arrow">›</div></div>
     <div class="qbody"><div class="ans">
       <div class="sec">Spintronics</div>
       <ul class="pts">
@@ -504,7 +219,7 @@
   </div>
 
   <div class="qcard">
-    <div class="qhead" onclick="tog_c(this)"><div class="qno">Q7</div><div class="qtxt">Discuss the role of chemical bonding in determining the properties of solid materials, with reference to different bonding types.</div><div class="arrow">›</div></div>
+    <div class="qhead" onclick="tog(this)"><div class="qno">Q7</div><div class="qtxt">Discuss the role of chemical bonding in determining the properties of solid materials, with reference to different bonding types.</div><div class="arrow">›</div></div>
     <div class="qbody"><div class="ans">
       <ul class="pts">
         <li><b>Ionic Bonding (e.g. NaCl, MgO):</b> Electron transfer between metal and non-metal. Results in high melting point, brittleness, ionic conductivity when molten, transparency to visible light (large band gap). Used as ceramic insulators and capacitor dielectrics.</li>
@@ -524,7 +239,7 @@
   </div>
 
   <div class="qcard">
-    <div class="qhead" onclick="tog_c(this)"><div class="qno">Q8 / Q10</div><div class="qtxt">Compare the chemical reactivity of metals and non-metals. Explain why Phosphorus and Boron are used as dopants rather than structural components in electronic circuits.</div><div class="arrow">›</div></div>
+    <div class="qhead" onclick="tog(this)"><div class="qno">Q8 / Q10</div><div class="qtxt">Compare the chemical reactivity of metals and non-metals. Explain why Phosphorus and Boron are used as dopants rather than structural components in electronic circuits.</div><div class="arrow">›</div></div>
     <div class="qbody"><div class="ans">
       <div class="grid2">
         <div class="cell"><div class="ct">Metals</div>1–3 valence electrons, easily lost (low ionization energy). Metallic bonding — delocalized, non-directional. React readily with O₂, water, acids; form basic oxides. Ductile, malleable, lustrous, good conductors.</div>
@@ -542,7 +257,7 @@
   </div>
 
   <div class="qcard">
-    <div class="qhead" onclick="tog_c(this)"><div class="qno">Q9</div><div class="qtxt">How do valence electrons determine the bonding characteristics of atoms? Discuss with reference to silicon in semiconductor crystals.</div><div class="arrow">›</div></div>
+    <div class="qhead" onclick="tog(this)"><div class="qno">Q9</div><div class="qtxt">How do valence electrons determine the bonding characteristics of atoms? Discuss with reference to silicon in semiconductor crystals.</div><div class="arrow">›</div></div>
     <div class="qbody"><div class="ans">
       <div class="sec">Valence Electrons and Bonding</div>
       <ul class="pts">
@@ -563,17 +278,14 @@
     </div></div>
   </div>
 
-  </div>
-    </div>
+  </div><!-- end m1 -->
 
-    <!-- CHEM MODULE 2 -->
-    <div class="section" id="c_m2">
-
-  <div class="section" id="c_m2">
+  <!-- ======= MODULE 2 ======= -->
+  <div class="module" id="m2">
   <div class="mod-label">Module 2 — Semiconductor Processing &amp; Advanced Materials</div>
 
   <div class="qcard open">
-    <div class="qhead" onclick="tog_c(this)"><div class="qno">Q1</div><div class="qtxt">Describe the process of doping Silicon with pentavalent impurities to form an n-type semiconductor.</div><div class="arrow">›</div></div>
+    <div class="qhead" onclick="tog(this)"><div class="qno">Q1</div><div class="qtxt">Describe the process of doping Silicon with pentavalent impurities to form an n-type semiconductor.</div><div class="arrow">›</div></div>
     <div class="qbody"><div class="ans">
       <div class="sec">Definition</div>
       Doping is the intentional introduction of controlled impurity atoms into pure silicon to modify its electrical conductivity. For n-type silicon, <b>pentavalent (Group V) elements</b> — Phosphorus (P), Arsenic (As), or Antimony (Sb) — act as donor dopants.
@@ -596,7 +308,7 @@
   </div>
 
   <div class="qcard">
-    <div class="qhead" onclick="tog_c(this)"><div class="qno">Q2</div><div class="qtxt">Explain why ultra-high purity ("six-nines" purity) silicon is required for integrated circuit fabrication.</div><div class="arrow">›</div></div>
+    <div class="qhead" onclick="tog(this)"><div class="qno">Q2</div><div class="qtxt">Explain why ultra-high purity ("six-nines" purity) silicon is required for integrated circuit fabrication.</div><div class="arrow">›</div></div>
     <div class="qbody"><div class="ans">
       <div class="sec">What "Six-Nines" Means</div>
       <b>99.9999% purity (6N)</b> — no more than 1 impurity atom per million silicon atoms. Leading-edge IC silicon often requires 9N–11N (1 impurity per billion–trillion atoms).
@@ -620,7 +332,7 @@
   </div>
 
   <div class="qcard">
-    <div class="qhead" onclick="tog_c(this)"><div class="qno">Q3</div><div class="qtxt">Describe the Czochralski (CZ) method used for growing single-crystal silicon ingots.</div><div class="arrow">›</div></div>
+    <div class="qhead" onclick="tog(this)"><div class="qno">Q3</div><div class="qtxt">Describe the Czochralski (CZ) method used for growing single-crystal silicon ingots.</div><div class="arrow">›</div></div>
     <div class="qbody"><div class="ans">
       <div class="sec">Overview</div>
       The Czochralski (CZ) process produces large-diameter (200–300 mm) single-crystal silicon ingots. Over 85% of all silicon wafers are produced this way. Developed in 1916, adapted for silicon in the 1950s.
@@ -645,7 +357,7 @@
   </div>
 
   <div class="qcard">
-    <div class="qhead" onclick="tog_c(this)"><div class="qno">Q4</div><div class="qtxt">Discuss the properties of GaN and SiC. Explain their advantages in power electronics and EV modules compared with Silicon.</div><div class="arrow">›</div></div>
+    <div class="qhead" onclick="tog(this)"><div class="qno">Q4</div><div class="qtxt">Discuss the properties of GaN and SiC. Explain their advantages in power electronics and EV modules compared with Silicon.</div><div class="arrow">›</div></div>
     <div class="qbody"><div class="ans">
       <div class="grid2">
         <div class="cell"><div class="ct">Silicon (Si) — Baseline</div>Band gap: 1.12 eV<br>Breakdown field: 0.3 MV/cm<br>Thermal conductivity: 150 W/m·K<br>Electron mobility: 1400 cm²/V·s<br>Max junction temp: ~150°C</div>
@@ -671,7 +383,7 @@
   </div>
 
   <div class="qcard">
-    <div class="qhead" onclick="tog_c(this)"><div class="qno">Q5</div><div class="qtxt">Discuss the principles of CVD and ALD thin-film deposition techniques. Analyze the advantages of ALD for nanoscale thin films.</div><div class="arrow">›</div></div>
+    <div class="qhead" onclick="tog(this)"><div class="qno">Q5</div><div class="qtxt">Discuss the principles of CVD and ALD thin-film deposition techniques. Analyze the advantages of ALD for nanoscale thin films.</div><div class="arrow">›</div></div>
     <div class="qbody"><div class="ans">
       <div class="sec">Chemical Vapor Deposition (CVD)</div>
       <ul class="pts">
@@ -700,7 +412,7 @@
   </div>
 
   <div class="qcard">
-    <div class="qhead" onclick="tog_c(this)"><div class="qno">Q6</div><div class="qtxt">Outline the major processing steps from a silicon ingot to semiconductor wafers. Discuss the significance of Chemical Mechanical Polishing (CMP).</div><div class="arrow">›</div></div>
+    <div class="qhead" onclick="tog(this)"><div class="qno">Q6</div><div class="qtxt">Outline the major processing steps from a silicon ingot to semiconductor wafers. Discuss the significance of Chemical Mechanical Polishing (CMP).</div><div class="arrow">›</div></div>
     <div class="qbody"><div class="ans">
       <div class="sec">Ingot-to-Wafer Steps</div>
       <ol class="steps">
@@ -726,7 +438,7 @@
   </div>
 
   <div class="qcard">
-    <div class="qhead" onclick="tog_c(this)"><div class="qno">Q7</div><div class="qtxt">Discuss how doping alters the Fermi level in semiconductors. Illustrate the Fermi level shift in n-type and p-type materials.</div><div class="arrow">›</div></div>
+    <div class="qhead" onclick="tog(this)"><div class="qno">Q7</div><div class="qtxt">Discuss how doping alters the Fermi level in semiconductors. Illustrate the Fermi level shift in n-type and p-type materials.</div><div class="arrow">›</div></div>
     <div class="qbody"><div class="ans">
       <div class="sec">The Fermi Level</div>
       The <b>Fermi level (EF)</b> is the energy level at which the probability of finding an electron is exactly 50% (Fermi-Dirac distribution). It characterizes the electron population in a material and is the fundamental reference energy in semiconductor device analysis.
@@ -763,7 +475,7 @@
   </div>
 
   <div class="qcard">
-    <div class="qhead" onclick="tog_c(this)"><div class="qno">Q8</div><div class="qtxt">Compare the properties of GaAs and Silicon (Si). Identify applications where GaAs provides superior performance and comment on its major chemical limitation.</div><div class="arrow">›</div></div>
+    <div class="qhead" onclick="tog(this)"><div class="qno">Q8</div><div class="qtxt">Compare the properties of GaAs and Silicon (Si). Identify applications where GaAs provides superior performance and comment on its major chemical limitation.</div><div class="arrow">›</div></div>
     <div class="qbody"><div class="ans">
       <div class="grid2">
         <div class="cell"><div class="ct">Silicon (Si)</div>Band gap: <b>1.12 eV (indirect)</b><br>Electron mobility: 1400 cm²/V·s<br>Thermal conductivity: 150 W/m·K<br>Native oxide: Excellent SiO₂<br>Substrate cost: Very low<br>Wafer size: Up to 300 mm<br>Light emission: Very poor</div>
@@ -783,7 +495,7 @@
   </div>
 
   <div class="qcard">
-    <div class="qhead" onclick="tog_c(this)"><div class="qno">Q9</div><div class="qtxt">Describe the process of thermal oxidation in silicon technology. Explain how the SiO₂ layer is utilized in MOSFET gate structures.</div><div class="arrow">›</div></div>
+    <div class="qhead" onclick="tog(this)"><div class="qno">Q9</div><div class="qtxt">Describe the process of thermal oxidation in silicon technology. Explain how the SiO₂ layer is utilized in MOSFET gate structures.</div><div class="arrow">›</div></div>
     <div class="qbody"><div class="ans">
       <div class="sec">Thermal Oxidation</div>
       Thermal oxidation is the process where silicon reacts with oxygen or water vapor at elevated temperatures to grow a stable SiO₂ layer directly on the silicon surface.
@@ -809,7 +521,7 @@
   </div>
 
   <div class="qcard">
-    <div class="qhead" onclick="tog_c(this)"><div class="qno">Q10</div><div class="qtxt">Discuss the key material requirements for semiconductor devices in AI processors — thermal stability, energy efficiency, and rapid switching.</div><div class="arrow">›</div></div>
+    <div class="qhead" onclick="tog(this)"><div class="qno">Q10</div><div class="qtxt">Discuss the key material requirements for semiconductor devices in AI processors — thermal stability, energy efficiency, and rapid switching.</div><div class="arrow">›</div></div>
     <div class="qbody"><div class="ans">
       <div class="sec">Context</div>
       AI processors (NVIDIA H100, Google TPU) perform trillions of matrix operations per second, integrating billions of transistors at 3–5 nm nodes, dissipating 300–700 W. Their material requirements are among the most demanding in the semiconductor industry.
@@ -840,32 +552,19 @@
     </div></div>
   </div>
 
-  </div>
-    </div>
-  </div> <!-- end chemistry -->
+  </div><!-- end m2 -->
+</div>
 
 <script>
-  function showSubject(id, el) {
-    document.querySelectorAll('.subject-content').forEach(s => s.style.display = 'none');
-    document.querySelectorAll('.subj-tab').forEach(t => t.classList.remove('active'));
-    document.getElementById(id).style.display = 'block';
-    el.classList.add('active');
-  }
-
-  function show(id, el) {
-    const parent = document.getElementById(id).parentElement;
-    parent.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-    
-    const tabsWrapper = el.parentElement;
-    tabsWrapper.querySelectorAll('.mod-tab').forEach(t => t.classList.remove('active'));
-    
-    document.getElementById(id).classList.add('active');
-    el.classList.add('active');
-  }
-
-  function tog_c(header) {
-    header.parentElement.classList.toggle('open');
-  }
+function sw(id, btn) {
+  document.querySelectorAll('.module').forEach(m => m.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+function tog(header) {
+  header.parentElement.classList.toggle('open');
+}
 </script>
 </body>
 </html>
