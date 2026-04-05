@@ -7,49 +7,55 @@ more modern look and feel.
 """
 import re
 
-
 FILE_PATH = 'index.html'
 
-with open(FILE_PATH, 'r', encoding='utf-8') as f:
-    text = f.read()
+def read_file(path):
+    with open(path, 'r', encoding='utf-8') as f:
+        return f.read()
 
-# Remove accordion logic and convert qcard to card
-text = re.sub(r'<div class="qcard[^>]*>', '<div class="card">', text)
+def write_file(path, content):
+    with open(path, 'w', encoding='utf-8') as f:
+        f.write(content)
 
-# Convert qhead, qno, qtxt into q
-def repl_qhead(match):
-    qno = match.group(1).strip()
-    qtxt = match.group(2).strip()
-    return f'<div class="q">{qno}. {qtxt}</div>'
-text = re.sub(r'<div class="qhead"[^>]*><div class="qno">(.*?)</div><div class="qtxt">(.*?)</div><div class="arrow">.*?</div></div>', repl_qhead, text)
+def convert_html(text):
+    # Remove accordion logic and convert qcard to card
+    text = re.sub(r'<div class="qcard[^>]*>', '<div class="card">', text)
 
-# Convert qbody and ans
-text = text.replace('<div class="qbody"><div class="ans">', '<div class="a">')
-# the closing div of qbody is just an extra /div, let's fix it at the end of every answer
-# We'll just replace </div></div> closing the qbody with </div> because qbody had 2 divs. 
-text = text.replace("    </div></div>\n  </div>", "    </div>\n  </div>")
+    # Convert qhead, qno, qtxt into q
+    def repl_qhead(match):
+        qno = match.group(1).strip()
+        qtxt = match.group(2).strip()
+        return f'<div class="q">{qno}. {qtxt}</div>'
+    text = re.sub(r'<div class="qhead"[^>]*><div class="qno">(.*?)</div><div class="qtxt">(.*?)</div><div class="arrow">.*?</div></div>', repl_qhead, text)
 
-# Convert .sec to bold
-text = re.sub(r'<div class="sec">(.*?)</div>', r'<b>\1</b><br>', text)
+    # Convert qbody and ans
+    text = text.replace('<div class="qbody"><div class="ans">', '<div class="a">')
+    # The closing div of qbody is just an extra /div, let's fix it at the end of every answer
+    text = text.replace("    </div></div>\n  </div>", "    </div>\n  </div>")
 
-# Convert .note to .tip
-text = text.replace('class="note"', 'class="tip"')
+    # Convert .sec to bold
+    text = re.sub(r'<div class="sec">(.*?)</div>', r'<b>\1</b><br>', text)
 
-# Convert .box to .eg
-text = text.replace('class="box"', 'class="eg"')
+    # Convert .note to .tip
+    text = text.replace('class="note"', 'class="tip"')
 
-# Convert lists (ul.pts and ol.steps) to points
-def convert_list(match):
-    items = re.findall(r'<li>(.*?)</li>', match.group(0), flags=re.DOTALL)
-    out = []
-    for i, item in enumerate(items, 1):
-        out.append(f'<div class="point"><div class="pnum">{i}</div><div class="ptxt">{item.strip()}</div></div>')
-    return '\n'.join(out)
+    # Convert .box to .eg
+    text = text.replace('class="box"', 'class="eg"')
 
-text = re.sub(r'<ul class="pts">(.*?)</ul>', convert_list, text, flags=re.DOTALL)
-text = re.sub(r'<ol class="steps">(.*?)</ol>', convert_list, text, flags=re.DOTALL)
+    # Convert lists (ul.pts and ol.steps) to points
+    def convert_list(match):
+        items = re.findall(r'<li>(.*?)</li>', match.group(0), flags=re.DOTALL)
+        out = []
+        for i, item in enumerate(items, 1):
+            out.append(f'<div class="point"><div class="pnum">{i}</div><div class="ptxt">{item.strip()}</div></div>')
+        return '\n'.join(out)
 
-with open(FILE_PATH, 'w', encoding='utf-8') as f:
-    f.write(text)
+    text = re.sub(r'<ul class="pts">(.*?)</ul>', convert_list, text, flags=re.DOTALL)
+    text = re.sub(r'<ol class="steps">(.*?)</ol>', convert_list, text, flags=re.DOTALL)
+    return text
 
-print("Converted successfully!")
+if __name__ == "__main__":
+    content = read_file(FILE_PATH)
+    updated_content = convert_html(content)
+    write_file(FILE_PATH, updated_content)
+    print("Converted successfully!")
