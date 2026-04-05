@@ -8,3 +8,17 @@ A collection of scripts designed to process and format physics notes from HTML f
 - `merge.py`: Script to merge content across different HTML files.
 - `index.html`: Main physics notes file.
 - `user.html`: User-specific physics notes or secondary content.
+
+## Usage
+
+### Converting Notes
+To update the HTML structure of your notes, run:
+```bash
+python convert.py
+```
+
+### Merging Modules
+To merge chemistry modules from `user.html` into `index.html`:
+```bash
+python merge.py
+```
