@@ -13,15 +13,21 @@ with open('index.html', 'r', encoding='utf-8') as f:
 with open('user.html', 'r', encoding='utf-8') as f:
     user_html = f.read()
 
-m1 = re.search(r'<!-- ======= MODULE 1 ======= -->(.*?)<!-- end m1 -->', user_html, re.DOTALL).group(1)
-m2 = re.search(r'<!-- ======= MODULE 2 ======= -->(.*?)<!-- end m2 -->', user_html, re.DOTALL).group(1)
-
-m1 = m1.replace('id="m1"', 'id="c_m1"').replace('class="module active"', 'class="section active"')
-m2 = m2.replace('id="m2"', 'id="c_m2"').replace('class="module"', 'class="section"')
-
-# Also fix the inner onclicks for toggling
-m1 = m1.replace('onclick="tog(this)"', 'onclick="tog_c(this)"')
-m2 = m2.replace('onclick="tog(this)"', 'onclick="tog_c(this)"')
+modules = []
+for i in [1, 2]:
+    pattern = rf'<!-- ======= MODULE {i} ======= -->(.*?)<!-- end m{i} -->'
+    content = re.search(pattern, user_html, re.DOTALL).group(1)
+    
+    # Apply transformations
+    content = content.replace(f'id="m{i}"', f'id="c_m{i}"')
+    content = content.replace('onclick="tog(this)"', 'onclick="tog_c(this)"')
+    
+    # Set classes
+    status_class = "section active" if i == 1 else "section"
+    content = content.replace(f'class="module{" active" if i == 1 else ""}"', f'class="{status_class}"')
+    
+    modules.append(content)
+m1, m2 = modules
 
 css_to_add = "\n  /* Chemistry Specific Styles */\n" + \
     "  .mod-label { font-size: 11px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #aaa; margin-bottom: 1.5rem; }\n" + \
