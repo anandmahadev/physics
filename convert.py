@@ -1,4 +1,12 @@
+"""
+Physics HTML Notes Converter
+---------------------------
+Updates and refactors HTML structure for physics study materials, 
+converting various question formats and stylistic elements to a 
+more modern look and feel.
+"""
 import re
+
 
 with open('index.html', 'r', encoding='utf-8') as f:
     text = f.read()
