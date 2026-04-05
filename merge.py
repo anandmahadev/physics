@@ -1,3 +1,10 @@
+"""
+Physics & Chemistry Note Merger
+------------------------------
+Automates the process of merging Chemistry modules from user.html into 
+the main index.html file, applying specific styling and interactive 
+toggling functionality.
+"""
 import re
 
 with open('index.html', 'r', encoding='utf-8') as f:
