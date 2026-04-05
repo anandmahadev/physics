@@ -8,7 +8,9 @@ more modern look and feel.
 import re
 
 
-with open('index.html', 'r', encoding='utf-8') as f:
+FILE_PATH = 'index.html'
+
+with open(FILE_PATH, 'r', encoding='utf-8') as f:
     text = f.read()
 
 # Remove accordion logic and convert qcard to card
@@ -47,7 +49,7 @@ def convert_list(match):
 text = re.sub(r'<ul class="pts">(.*?)</ul>', convert_list, text, flags=re.DOTALL)
 text = re.sub(r'<ol class="steps">(.*?)</ol>', convert_list, text, flags=re.DOTALL)
 
-with open('index.html', 'w', encoding='utf-8') as f:
+with open(FILE_PATH, 'w', encoding='utf-8') as f:
     f.write(text)
 
 print("Converted successfully!")
