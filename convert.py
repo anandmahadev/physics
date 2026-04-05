@@ -21,6 +21,9 @@ def convert_html(text):
     # Remove accordion logic and convert qcard to card
     text = re.sub(r'<div class="qcard[^>]*>', '<div class="card">', text)
 
+    # Convert .sec to bold
+    text = re.sub(r'<div class="sec">(.*?)</div>', r'<b>\1</b><br>', text)
+
     # Convert qhead, qno, qtxt into q
     def repl_qhead(match):
         qno = match.group(1).strip()
@@ -28,19 +31,15 @@ def convert_html(text):
         return f'<div class="q">{qno}. {qtxt}</div>'
     text = re.sub(r'<div class="qhead"[^>]*><div class="qno">(.*?)</div><div class="qtxt">(.*?)</div><div class="arrow">.*?</div></div>', repl_qhead, text)
 
-    # Convert qbody and ans
-    text = text.replace('<div class="qbody"><div class="ans">', '<div class="a">')
-    # The closing div of qbody is just an extra /div, let's fix it at the end of every answer
-    text = text.replace("    </div></div>\n  </div>", "    </div>\n  </div>")
-
-    # Convert .sec to bold
-    text = re.sub(r'<div class="sec">(.*?)</div>', r'<b>\1</b><br>', text)
-
-    # Convert .note to .tip
-    text = text.replace('class="note"', 'class="tip"')
-
-    # Convert .box to .eg
-    text = text.replace('class="box"', 'class="eg"')
+    # Simple string replacements
+    replacements = {
+        '<div class="qbody"><div class="ans">': '<div class="a">',
+        '    </div></div>\n  </div>': '    </div>\n  </div>',
+        'class="note"': 'class="tip"',
+        'class="box"': 'class="eg"'
+    }
+    for old, new in replacements.items():
+        text = text.replace(old, new)
 
     # Convert lists (ul.pts and ol.steps) to points
     def convert_list(match):
