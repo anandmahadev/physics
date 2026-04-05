@@ -7,11 +7,17 @@ toggling functionality.
 """
 import re
 
-with open('index.html', 'r', encoding='utf-8') as f:
-    orig = f.read()
+import os
 
-with open('user.html', 'r', encoding='utf-8') as f:
-    user_html = f.read()
+def read_safe(path):
+    if not os.path.exists(path):
+        print(f"Error: {path} not found.")
+        exit(1)
+    with open(path, 'r', encoding='utf-8') as f:
+        return f.read()
+
+orig = read_safe('index.html')
+user_html = read_safe('user.html')
 
 modules = []
 for i in [1, 2]:
